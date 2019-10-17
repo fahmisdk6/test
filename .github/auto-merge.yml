@@ -2,9 +2,8 @@
 
 deleteBranchAfterMerge: true
 reportStatus: true
+mergeMethod: squash
 
-minApprovals:
-  COLLABORATOR: 0
 maxRequestedChanges:
   NONE: 0
 blockingLabels:
