@@ -1,18 +1,21 @@
 # Configuration for probot-auto-merge - https://github.com/bobvanderlinden/probot-auto-merge
 
-deleteBranchAfterMerge: true
 reportStatus: true
+
 mergeMethod: squash
+mergeCommitMessage: |
+  {title} (#{number})
+  {body}
+deleteBranchAfterMerge: true
 
+minApprovals:
+  COLLABORATOR: 1
 maxRequestedChanges:
-  NONE: 0
-blockingLabels:
-- blocked
+  COLLABORATOR: 0
 
-# Will merge whenever the above conditions are met, but also
-# the owner has approved or merge label was added.
-rules:
-- minApprovals:
-    OWNER: 1
-- requiredLabels:
-  - merge
+blockingTitleRegex: '/\bwip\b/i'
+blockingLabels:
+- WIP
+- Dont merge
+requiredLabels:
+- Automerge
